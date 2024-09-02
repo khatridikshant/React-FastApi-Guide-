@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, Depends
 from typing import Annotated
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
@@ -47,5 +47,17 @@ db_dependecy = Annotated[Session, Depends(get_db)]
 
 # Creates db tables based on SQLAlchemy models
 models.Base.metadata.create_all(bind = engine)
+
+@app.post("/transactions/", response_model=TransactionModel)
+async def create_transaction(transaction: TransactionBase, db : db_dependecy):
+    db_transaction = models.Transaction(**transaction.dict())
+    db.add(db_transaction)
+    db.commit()
+    db.refresh(db_transaction)
+    return db_transaction
+
+
+
+
 
 

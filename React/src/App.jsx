@@ -23,7 +23,7 @@ function App() {
   useEffect(() => { fetchTransactions(), [] })
 
   const handleInputChange = (event) => {
-    const value = event.target.type == 'checkbox' ? event.target.checked : event.target.value;
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
     setFormData({
       ...formData, [event.target.name]: value,
     });
@@ -132,7 +132,7 @@ function App() {
                 <td>{transactions.amount}</td>
                 <td>{transactions.category}</td>
                 <td>{transactions.description}</td>
-                <td>{transactions.income ? 'Yes': 'No'}</td>
+                <td>{transactions.is_income ? 'Yes': 'No'}</td>
                 <td>{transactions.date}</td>
               </tr>
             )

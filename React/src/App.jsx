@@ -105,6 +105,42 @@ function App() {
 
         </form>
 
+        <table className='table table-striped table-bordered table-hover'>
+          <thead>
+
+            <tr>
+              <th>
+                  Amount
+              </th>
+              <th>
+                  Category
+              </th>
+              <th>
+                Description
+              </th>
+              <th>
+                Income ?
+              </th>
+              <th>
+                Date
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.map((transactions) => (
+              <tr key={transactions.id}>
+                <td>{transactions.amount}</td>
+                <td>{transactions.category}</td>
+                <td>{transactions.description}</td>
+                <td>{transactions.income ? 'Yes': 'No'}</td>
+                <td>{transactions.date}</td>
+              </tr>
+            )
+            )}
+          </tbody>
+
+        </table>
+
       </div>
     </div>
   )

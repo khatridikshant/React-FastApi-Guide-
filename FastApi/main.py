@@ -13,11 +13,11 @@ app = FastAPI()
 
 #List of allowed origins for CORS
 origins = [
-    'http://localhost:5173/'
+    'http://localhost:5173'
 ]
 
 # Add CORS middleware to the FastApi application
-app.add_middleware(CORSMiddleware, allow_origins=origins)
+app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True, allow_methods=['*'],allow_headers=['*'])
 
 
 # Base Model for transactions using pydantic
